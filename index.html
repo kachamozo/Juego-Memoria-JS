@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Juego de Memoria</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<main>
+			<section class="section1">
+				<h1>Juego de Memoria</h1>
+				<table>
+					<tr>
+						<td><button onclick="destapar(0)" id="0"></button></td>
+						<td><button onclick="destapar(1)" id="1"></button></td>
+						<td><button onclick="destapar(2)" id="2"></button></td>
+						<td><button onclick="destapar(3)" id="3"></button></td>
+					</tr>
+					<tr>
+						<td><button onclick="destapar(4)" id="4"></button></td>
+						<td><button onclick="destapar(5)" id="5"></button></td>
+						<td><button onclick="destapar(6)" id="6"></button></td>
+						<td><button onclick="destapar(7)" id="7"></button></td>
+					</tr>
+					<tr>
+						<td><button onclick="destapar(8)" id="8"></button></td>
+						<td><button onclick="destapar(9)" id="9"></button></td>
+						<td><button onclick="destapar(10)" id="10"></button></td>
+						<td><button onclick="destapar(11)" id="11"></button></td>
+					</tr>
+					<tr>
+						<td><button onclick="destapar(12)" id="12"></button></td>
+						<td><button onclick="destapar(13)" id="13"></button></td>
+						<td><button onclick="destapar(14)" id="14"></button></td>
+						<td><button onclick="destapar(15)" id="15"></button></td>
+					</tr>
+				</table>
+			</section>
+			<section class="section2">
+				<div id="aciertos" class="estadisticas">Aciertos: 0</div>
+				<div id="tiempo" class="estadisticas">Tiempo: 25 segundos</div>
+				<div id="movimientos" class="estadisticas">Movimientos: 0</div>
+				<button id="reiniciar" onclick="reload()">Reiniciar</button>
+			</section>
+		</main>
+		<footer>
+			<p>
+				Juego programado por
+				<a href="https://www.linkedin.com/in/rolyochoa/" target="_blank"
+					>Roly Ochoa</a
+				>
+			</p>
+		</footer>
+		<script type="text/javascript" src="main.js"></script>
+	</body>
+</html>
