@@ -10,6 +10,13 @@ let temporizador = false;
 let timer = 25;
 let pararTiempo = null;
 
+// Instanciando sonidos
+const clickAudio = new Audio('./sonidos/click.wav');
+const rigthAudio = new Audio('./sonidos/rigth.wav');
+const wrongAudio = new Audio('./sonidos/wrong.wav');
+const winAudio = new Audio('./sonidos/win.wav');
+const loseAudio = new Audio('./sonidos/lose.wav');
+
 // Apuntando a documento HTML
 let mostrarMovimientos = document.getElementById('movimientos');
 let mostrarAciertos = document.getElementById('aciertos');
@@ -35,8 +42,9 @@ function iniciarTiempo() {
 function mostrarTodos() {
 	for (let i = 0; i < 16; i++) {
 		let tarjeta = document.getElementById(i);
-		tarjeta.innerHTML = numeros[i];
+		tarjeta.innerHTML = `<img src='./imagenes/${numeros[i]}.png'>`;
 		tarjeta.disabled = true;
+		loseAudio.play();
 	}
 }
 
@@ -57,7 +65,8 @@ function destapar(id) {
 	if (tarjetasDestapadas === 1) {
 		tarjeta1 = document.getElementById(id);
 		primerValor = numeros[id];
-		tarjeta1.innerHTML = primerValor;
+		tarjeta1.innerHTML = `<img src='./imagenes/${primerValor}.png'>`;
+		clickAudio.play();
 
 		// Deshabilitar primer boton
 		tarjeta1.disabled = true;
@@ -66,7 +75,7 @@ function destapar(id) {
 	} else if (tarjetasDestapadas === 2) {
 		tarjeta2 = document.getElementById(id);
 		segundoValor = numeros[id];
-		tarjeta2.innerHTML = segundoValor;
+		tarjeta2.innerHTML = `<img src='./imagenes/${segundoValor}.png'>`;
 
 		// Deshabilitar primer boton
 		tarjeta2.disabled = true;
@@ -82,9 +91,11 @@ function destapar(id) {
 			// Incrementar aciertos
 			aciertos++;
 			mostrarAciertos.innerHTML = `Aciertos: ${aciertos}`;
+			rigthAudio.play();
 
 			// Terminar el juego
 			if (aciertos === 8) {
+				winAudio.play();
 				clearInterval(pararTiempo);
 				mostrarAciertos.innerHTML = `Aciertos: ${aciertos} 🥇`;
 				mostrarTiempo.innerHTML = `Fantástico...!!! Ganaste 🏆  Sólo te demoraste ${
@@ -93,13 +104,14 @@ function destapar(id) {
 			}
 		} else {
 			// Mostrar momentaneamente los valores y volver a tapar
+			wrongAudio.play();
 			setTimeout(() => {
 				tarjeta1.innerHTML = null;
 				tarjeta2.innerHTML = null;
 				tarjeta1.disabled = false;
 				tarjeta2.disabled = false;
 				tarjetasDestapadas = 0;
-			}, 800);
+			}, 700);
 		}
 	}
 }
