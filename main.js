@@ -7,7 +7,7 @@ let segundoValor = null;
 let movimientos = 0;
 let aciertos = 0;
 let temporizador = false;
-let timer = 25;
+let timer = 30;
 let pararTiempo = null;
 
 // Instanciando sonidos
